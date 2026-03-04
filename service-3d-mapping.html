@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>3D Mapping &amp; Analysis – WasteParrot</title>
+  <link rel="stylesheet" href="styles.css"/><link rel="stylesheet" href="page-styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🦜</span><span>WasteParrot</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="index.html#live-map">Live Map</a></li><li><a href="team.html">Team</a></li>
+      <li><a href="index.html#contact" class="btn-nav">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="service-hero" style="background:linear-gradient(135deg,#0a0f1e,#312e81,#0a0f1e)">
+  <div class="hero-bg"><div class="orb orb1" style="background:#6366f1"></div><div class="grid-overlay"></div></div>
+  <div class="service-hero-inner">
+    <div class="breadcrumb" style="justify-content:center;margin-bottom:16px"><a href="index.html">Home</a><span>/</span><a href="services.html">Services</a><span>/</span><span style="color:rgba(255,255,255,.7)">3D Mapping</span></div>
+    <div class="badge badge-blue">📷 Advanced Imaging</div>
+    <h1>Oblique Imagery:<br/><span class="gradient-text">3D Mapping &amp; Analysis</span></h1>
+    <p>High-resolution drone photogrammetry and LiDAR scanning creates centimeter-accurate 3D models of waste sites, landfills, and urban environments for planning, compliance, and analysis.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="index.html#contact" class="btn-primary">Request a 3D Survey</a>
+      <a href="services.html" class="btn-secondary">All Services</a>
+    </div>
+  </div>
+</section>
+
+<section class="service-detail section">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-text">
+        <div class="badge badge-blue">Technology</div>
+        <h2>LiDAR Pole Mapping &amp; 3D Oblique Imagery</h2>
+        <p>WasteParrot's advanced drone mapping solutions combine <strong style="color:var(--white)">LiDAR scanning, oblique photogrammetry, and AI analysis</strong> to create precise, georeferenced 3D models of any environment — from landfill sites to coastal areas to industrial facilities.</p>
+        <p>Our drones capture millions of data points per second, building detailed point clouds that reveal waste volumes, accumulation patterns, and site changes over time with centimeter accuracy.</p>
+        <ul>
+          <li>Centimeter-accurate LiDAR point cloud generation</li>
+          <li>Multi-angle oblique photogrammetry</li>
+          <li>AI-powered change detection between surveys</li>
+          <li>Landfill volume calculation and compaction analysis</li>
+          <li>Deliverable in standard GIS formats (LAS, OBJ, GeoTIFF)</li>
+          <li>Regulatory compliance reporting ready</li>
+        </ul>
+        <div class="service-stats-bar">
+          <div class="ssb-item"><div class="ssb-num">2 cm</div><div class="ssb-label">Accuracy</div></div>
+          <div class="ssb-item"><div class="ssb-num">500 ha</div><div class="ssb-label">Coverage/Flight</div></div>
+          <div class="ssb-item"><div class="ssb-num">48 hr</div><div class="ssb-label">Delivery Time</div></div>
+        </div>
+      </div>
+      <div class="service-visual" style="background:linear-gradient(135deg,#0a0f1e,#1e1b4b)">
+        <div class="service-visual-inner">
+          <div class="service-visual-icon">🌐</div>
+          <div class="service-visual-label">LiDAR Point Cloud</div>
+        </div>
+        <!-- Simulated point cloud dots -->
+        <canvas id="point-cloud-canvas" style="position:absolute;inset:0;width:100%;height:100%;opacity:.4"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lidar-section section-dark section">
+  <div class="container">
+    <div class="section-header"><div class="badge badge-blue">Deliverables</div><h2>What You Receive</h2></div>
+    <div class="lidar-grid">
+      <div class="lidar-card" onclick="alert('LiDAR demo: contact us for a live site demonstration')">
+        <div class="lidar-thumb">
+          <div class="lidar-icon">🌐</div>
+          <div class="lidar-label">Color-coded elevation LiDAR scan</div>
+          <div class="lidar-play">▶</div>
+        </div>
+        <div class="lidar-title">LiDAR Pole Mapping</div>
+      </div>
+      <div class="lidar-card" onclick="alert('3D imagery demo: contact us for a live site demonstration')">
+        <div class="lidar-thumb">
+          <div class="lidar-icon">📡</div>
+          <div class="lidar-label">High-resolution 3D oblique model</div>
+          <div class="lidar-play">▶</div>
+        </div>
+        <div class="lidar-title">3D Oblique Imagery / Mapping</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-cards-section">
+  <div class="container">
+    <div class="section-header"><div class="badge badge-blue">Applications</div><h2>Use Cases</h2></div>
+    <div class="service-cards">
+      <div class="service-card"><div class="sc-icon">🏔️</div><div class="sc-title">Landfill Volume</div><div class="sc-desc">Precise volumetric calculations of landfill capacity, compaction rates, and remaining lifespan</div></div>
+      <div class="service-card"><div class="sc-icon">🌊</div><div class="sc-title">Coastal Mapping</div><div class="sc-desc">Marine waste accumulation mapping, erosion tracking, and conservation planning</div></div>
+      <div class="service-card"><div class="sc-icon">🏭</div><div class="sc-title">Industrial Sites</div><div class="sc-desc">Facility layout mapping, hazard zone identification, and regulatory compliance documentation</div></div>
+      <div class="service-card"><div class="sc-icon">🏙️</div><div class="sc-title">Urban Planning</div><div class="sc-desc">City-scale waste infrastructure mapping to optimize bin placement and collection routes</div></div>
+      <div class="service-card"><div class="sc-icon">📈</div><div class="sc-title">Change Detection</div><div class="sc-desc">Compare surveys over time to track waste accumulation, illegal dumping, and site remediation progress</div></div>
+      <div class="service-card"><div class="sc-icon">📋</div><div class="sc-title">Compliance Reports</div><div class="sc-desc">Automatically generated regulatory compliance reports with georeferenced evidence</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="container">
+    <div class="section-header"><div class="badge badge-blue">Related Services</div><h2>Explore More</h2></div>
+    <div class="related-grid">
+      <a href="service-ai-drones.html" class="related-card"><span class="rc-icon">🚁</span><span class="rc-title">AI Drone Services</span><span class="rc-arrow">›</span></a>
+      <a href="service-industrial.html" class="related-card"><span class="rc-icon">🏭</span><span class="rc-title">Industrial Monitoring</span><span class="rc-arrow">›</span></a>
+      <a href="service-beach.html" class="related-card"><span class="rc-icon">🏖️</span><span class="rc-title">Beach Cleanup</span><span class="rc-arrow">›</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container cta-inner">
+    <div class="badge badge-white">Get a Survey</div>
+    <h2>Need a 3D Survey of Your Site?</h2>
+    <p>Our team can deploy a mapping drone within 72 hours and deliver a full 3D model within 48 hours of the flight.</p>
+    <div class="cta-btns"><a href="index.html#contact" class="btn-primary">Request a Survey</a><a href="services.html" class="btn-secondary">All Services</a></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand"><div class="logo"><span class="logo-icon">🦜</span> WasteParrot</div><p>AI-powered drone waste collection.</p></div>
+    <div class="footer-links">
+      <div><h5>Services</h5><a href="service-ai-drones.html">AI Drone Services</a><a href="service-3d-mapping.html">3D Mapping</a></div>
+      <div><h5>Company</h5><a href="about.html">About</a><a href="team.html">Team</a></div>
+      <div><h5>Contact</h5><a href="mailto:Info@wasteparrot.com">Info@wasteparrot.com</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 WasteParrot Inc. 🌍</p></div>
+</footer>
+<script src="shared.js"></script>
+<script>
+/* Animated point cloud on canvas */
+const cv = document.getElementById('point-cloud-canvas');
+if (cv) {
+  const ctx = cv.getContext('2d');
+  const pts = Array.from({length:120},()=>({
+    x:Math.random(), y:Math.random(),
+    vx:(Math.random()-.5)*.0008, vy:(Math.random()-.5)*.0008,
+    c:['#22c55e','#6366f1','#f59e0b','#3b82f6','#a855f7'][Math.floor(Math.random()*5)],
+    r:Math.random()*2+1
+  }));
+  function drawCloud(){
+    cv.width=cv.clientWidth; cv.height=cv.clientHeight;
+    ctx.clearRect(0,0,cv.width,cv.height);
+    pts.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>1)p.vx*=-1;
+      if(p.y<0||p.y>1)p.vy*=-1;
+      ctx.beginPath();
+      ctx.arc(p.x*cv.width, p.y*cv.height, p.r, 0, Math.PI*2);
+      ctx.fillStyle=p.c; ctx.fill();
+    });
+    requestAnimationFrame(drawCloud);
+  }
+  drawCloud();
+}
+</script>
+</body>
+</html>

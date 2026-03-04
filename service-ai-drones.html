@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>AI-Powered Drone Services – WasteParrot</title>
+  <link rel="stylesheet" href="styles.css"/><link rel="stylesheet" href="page-styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🦜</span><span>WasteParrot</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="index.html#live-map">Live Map</a></li><li><a href="team.html">Team</a></li>
+      <li><a href="index.html#contact" class="btn-nav">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="service-hero" style="background:linear-gradient(135deg,#0a1628,#1e3a5f,#0a0f1e)">
+  <div class="hero-bg"><div class="orb orb1"></div><div class="grid-overlay"></div></div>
+  <div class="service-hero-inner">
+    <div class="breadcrumb" style="justify-content:center;margin-bottom:16px"><a href="index.html">Home</a><span>/</span><a href="services.html">Services</a><span>/</span><span style="color:rgba(255,255,255,.7)">AI Drone Services</span></div>
+    <div class="badge badge-green">🚁 Core Service</div>
+    <h1>AI-Powered <span class="gradient-text">Drone Services</span></h1>
+    <p>Autonomous drones equipped with LiDAR, multi-spectral cameras, and on-board AI processors — detecting, classifying, and collecting waste with 98% accuracy, day or night.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="index.html#contact" class="btn-primary">Deploy in Your City</a>
+      <a href="index.html#live-map" class="btn-secondary">View Live Map</a>
+    </div>
+  </div>
+</section>
+
+<section class="service-detail section">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-text">
+        <div class="badge badge-green">How It Works</div>
+        <h2>Intelligent Drones That Think and Act</h2>
+        <p>WasteParrot's AI drones combine cutting-edge hardware with on-board machine learning to autonomously detect, classify, and collect waste — without any human operator.</p>
+        <p>By streamlining operations, enhancing precision, and paving the way for a new era of innovation, WasteParrot's advanced drone mapping solutions — featuring <strong style="color:var(--white)">LiDAR, inspection capabilities, infrared gas detection, and CH₄ quantification</strong> — are set to revolutionize efficiency across industries.</p>
+        <ul>
+          <li>GPS RTK positioning with centimeter-level accuracy</li>
+          <li>LiDAR 3D mapping of waste accumulation zones</li>
+          <li>Multi-spectral camera for material identification</li>
+          <li>On-board edge AI running Neural Sorter inference</li>
+          <li>5G telemetry link to cloud platform</li>
+          <li>Autonomous return-to-charge when battery low</li>
+        </ul>
+        <div class="service-stats-bar">
+          <div class="ssb-item"><div class="ssb-num">98%</div><div class="ssb-label">Detection Accuracy</div></div>
+          <div class="ssb-item"><div class="ssb-num">3 m/s</div><div class="ssb-label">Processing Speed</div></div>
+          <div class="ssb-item"><div class="ssb-num">24/7</div><div class="ssb-label">Autonomous Operation</div></div>
+        </div>
+      </div>
+      <div class="service-visual">
+        <div class="service-visual-inner">
+          <div class="service-visual-icon">🚁</div>
+          <div class="service-visual-label">AI Drone Fleet</div>
+        </div>
+        <div style="position:absolute;bottom:20px;left:20px;right:20px">
+          <div style="background:rgba(0,0,0,.6);border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:12px 16px;font-size:.78rem;color:rgba(255,255,255,.7)">
+            <div style="color:var(--green);font-weight:700;margin-bottom:6px">⚡ Live Drone Status</div>
+            <div>Drone α-1 · GPS Lock · Scanning Zone 4B</div>
+            <div style="margin-top:4px;color:rgba(255,255,255,.5)">Confidence: 98.3% · Battery: 87%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-cards-section">
+  <div class="container">
+    <div class="section-header"><div class="badge badge-blue">Capabilities</div><h2>What Our Drones Can Do</h2></div>
+    <div class="service-cards">
+      <div class="service-card"><div class="sc-icon">👁️</div><div class="sc-title">Computer Vision</div><div class="sc-desc">Real-time waste detection using YOLO-based models trained on 4 billion waste images across 89 categories</div></div>
+      <div class="service-card"><div class="sc-icon">🌐</div><div class="sc-title">LiDAR Mapping</div><div class="sc-desc">3D point cloud generation of waste zones for precise volume estimation and accumulation tracking</div></div>
+      <div class="service-card"><div class="sc-icon">💨</div><div class="sc-title">Gas Detection</div><div class="sc-desc">Infrared CH₄ sensors detect methane leaks from landfills and organic waste sites in real time</div></div>
+      <div class="service-card"><div class="sc-icon">🤖</div><div class="sc-title">Swarm Intelligence</div><div class="sc-desc">Multi-agent RL coordinates fleets of 20+ drones without collisions or duplicate coverage</div></div>
+      <div class="service-card"><div class="sc-icon">⚡</div><div class="sc-title">Solar Charging</div><div class="sc-desc">Autonomous return to solar-powered charging stations — zero downtime, zero emissions</div></div>
+      <div class="service-card"><div class="sc-icon">📡</div><div class="sc-title">5G Telemetry</div><div class="sc-desc">Sub-50ms data link to cloud platform for real-time fleet monitoring and route adjustments</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="lidar-section section">
+  <div class="container">
+    <div class="section-header"><div class="badge badge-green">Technology Demos</div><h2>See It in Action</h2></div>
+    <div class="lidar-grid">
+      <div class="lidar-card" onclick="alert('LiDAR demo coming soon — contact us for a live demonstration')">
+        <div class="lidar-thumb"><div class="lidar-icon">🌐</div><div class="lidar-label">LiDAR Waste Site Mapping</div><div class="lidar-play">▶</div></div>
+        <div class="lidar-title">LiDAR Pole Mapping &amp; 3D Waste Detection</div>
+      </div>
+      <div class="lidar-card" onclick="alert('AI drone demo coming soon — contact us for a live demonstration')">
+        <div class="lidar-thumb"><div class="lidar-icon">🚁</div><div class="lidar-label">Drone Swarm Operation</div><div class="lidar-play">▶</div></div>
+        <div class="lidar-title">Autonomous Multi-Drone Waste Collection</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="container">
+    <div class="section-header"><div class="badge badge-blue">Related Services</div><h2>Explore More</h2></div>
+    <div class="related-grid">
+      <a href="service-3d-mapping.html" class="related-card"><span class="rc-icon">📷</span><span class="rc-title">3D Mapping &amp; Analysis</span><span class="rc-arrow">›</span></a>
+      <a href="service-recycling.html" class="related-card"><span class="rc-icon">♻️</span><span class="rc-title">Recycling Plant AI</span><span class="rc-arrow">›</span></a>
+      <a href="service-industrial.html" class="related-card"><span class="rc-icon">🏭</span><span class="rc-title">Industrial Monitoring</span><span class="rc-arrow">›</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container cta-inner">
+    <div class="badge badge-white">Deploy Now</div>
+    <h2>Ready to Launch Drones in Your City?</h2>
+    <p>Our team designs a custom drone fleet plan tailored to your city's geography, waste volume, and budget.</p>
+    <div class="cta-btns"><a href="index.html#contact" class="btn-primary">Get a Deployment Plan</a><a href="services.html" class="btn-secondary">All Services</a></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand"><div class="logo"><span class="logo-icon">🦜</span> WasteParrot</div><p>AI-powered drone waste collection.</p></div>
+    <div class="footer-links">
+      <div><h5>Services</h5><a href="service-ai-drones.html">AI Drone Services</a><a href="service-garbage.html">Garbage Management</a><a href="service-3d-mapping.html">3D Mapping</a></div>
+      <div><h5>Company</h5><a href="about.html">About</a><a href="team.html">Team</a></div>
+      <div><h5>Contact</h5><a href="mailto:Info@wasteparrot.com">Info@wasteparrot.com</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 WasteParrot Inc. 🌍</p></div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

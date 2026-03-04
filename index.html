@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WasteParrot – AI-Powered Drone Waste Collection</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="page-styles.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🦜</span><span>WasteParrot</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="#live-map">Live Map</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="#contact" class="btn-nav">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <div class="badge">🤖 Autonomous Drone Intelligence</div>
+      <h1>Intelligent<br/><span class="gradient-text">Empowerment</span></h1>
+      <p>AI Solutions for Sustainable Waste Management. Revolutionizing waste collection with cutting-edge drone technology and machine learning.</p>
+      <div class="hero-cta">
+        <a href="services.html" class="btn-primary">Drone Technology</a>
+        <a href="service-ai-drones.html" class="btn-secondary">AI Waste Sortation</a>
+      </div>
+      <div class="hero-email">› <a href="mailto:Info@wasteparrot.com">Info@wasteparrot.com</a></div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num" data-target="98">0</span><span>%</span><small>Accuracy</small></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num" data-target="500">0</span><span>+</span><small>Drones Deployed</small></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num" data-target="89">0</span><small>Waste Categories</small></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="drone-canvas-wrap">
+        <canvas id="drone-canvas"></canvas>
+        <div class="hud-overlay">
+          <div class="hud-badge"><span class="hud-pulse"></span>Fleet Online</div>
+          <div class="hud-row"><span class="hud-label">Drones Active</span><span class="hud-val">12</span></div>
+          <div class="hud-row"><span class="hud-label">Coverage</span><span class="hud-val">47 km²</span></div>
+          <div class="hud-row"><span class="hud-label">Battery Avg</span><span class="hud-val" id="hud-bat">87%</span></div>
+        </div>
+        <div class="hud-bottom">
+          <div class="hud-bar-wrap">
+            <span class="hud-bar-label">AI Confidence</span>
+            <div class="hud-bar"><div class="hud-bar-fill" id="hud-conf" style="width:98%"></div></div>
+            <span class="hud-bar-pct">98%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-dot"></div></div>
+</section>
+
+<!-- ─── KEY FEATURES ACCORDION ───────────────────────────── -->
+<section class="section kf-section" id="key-features">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-green">Our Services</div>
+      <h2>Look into <span class="gradient-text">Key Features</span></h2>
+    </div>
+    <div class="kf-layout">
+      <div class="kf-list">
+        <a href="service-ai-drones.html" class="kf-item active" data-idx="0">
+          <span class="kf-icon">🚁</span>
+          <span class="kf-label">AI-Powered Drone Services</span>
+          <span class="kf-arrow">›</span>
+        </a>
+        <a href="service-garbage.html" class="kf-item" data-idx="1">
+          <span class="kf-icon">🗑️</span>
+          <span class="kf-label">Garbage Management Solutions</span>
+          <span class="kf-arrow">›</span>
+        </a>
+        <a href="service-beach.html" class="kf-item" data-idx="2">
+          <span class="kf-icon">🏖️</span>
+          <span class="kf-label">Beach Cleanup &amp; Coastal Preservation</span>
+          <span class="kf-arrow">›</span>
+        </a>
+        <a href="service-recycling.html" class="kf-item" data-idx="3">
+          <span class="kf-icon">♻️</span>
+          <span class="kf-label">Recycling Plants</span>
+          <span class="kf-arrow">›</span>
+        </a>
+        <a href="service-community.html" class="kf-item" data-idx="4">
+          <span class="kf-icon">👥</span>
+          <span class="kf-label">Community Reporting</span>
+          <span class="kf-arrow">›</span>
+        </a>
+        <a href="service-industrial.html" class="kf-item" data-idx="5">
+          <span class="kf-icon">🏭</span>
+          <span class="kf-label">Industrial Sites Monitoring</span>
+          <span class="kf-arrow">›</span>
+        </a>
+        <a href="service-3d-mapping.html" class="kf-item" data-idx="6">
+          <span class="kf-icon">📷</span>
+          <span class="kf-label">Oblique Imagery: 3D Mapping and Analysis</span>
+          <span class="kf-arrow">›</span>
+        </a>
+      </div>
+      <div class="kf-preview">
+        <div class="kf-panel active" data-idx="0">
+          <div class="kf-panel-visual" style="background:linear-gradient(135deg,#0a1628,#1e3a5f)">
+            <div class="kf-drone-anim">🚁</div>
+            <div class="kf-panel-tag">LiDAR · 5G · AI Vision</div>
+          </div>
+          <div class="kf-panel-body">
+            <h3>AI-Powered Drone Services</h3>
+            <p>Autonomous drones equipped with LiDAR, multi-spectral cameras, and on-board AI processors scan urban environments to detect, classify, and collect waste with 98% accuracy — day or night.</p>
+            <a href="service-ai-drones.html" class="btn-primary" style="margin-top:16px">Learn More →</a>
+          </div>
+        </div>
+        <div class="kf-panel" data-idx="1">
+          <div class="kf-panel-visual" style="background:linear-gradient(135deg,#0d2018,#064e3b)">
+            <div class="kf-drone-anim">🗑️</div>
+            <div class="kf-panel-tag">Smart Routing · IoT · Analytics</div>
+          </div>
+          <div class="kf-panel-body">
+            <h3>Garbage Management Solutions</h3>
+            <p>AI-optimized collection schedules, smart bin sensors, and dynamic routing algorithms cut collection costs by 35% while improving service coverage across municipal areas.</p>
+            <a href="service-garbage.html" class="btn-primary" style="margin-top:16px">Learn More →</a>
+          </div>
+        </div>
+        <div class="kf-panel" data-idx="2">
+          <div class="kf-panel-visual" style="background:linear-gradient(135deg,#0a1f2e,#0369a1)">
+            <div class="kf-drone-anim">🏖️</div>
+            <div class="kf-panel-tag">Marine · Coastal · Conservation</div>
+          </div>
+          <div class="kf-panel-body">
+            <h3>Beach Cleanup &amp; Coastal Preservation</h3>
+            <p>Specialized waterproof drones survey coastlines, map plastic accumulation zones, and coordinate ground teams for targeted cleanup of beaches, mangroves, and marine environments.</p>
+            <a href="service-beach.html" class="btn-primary" style="margin-top:16px">Learn More →</a>
+          </div>
+        </div>
+        <div class="kf-panel" data-idx="3">
+          <div class="kf-panel-visual" style="background:linear-gradient(135deg,#1a0a2e,#6d28d9)">
+            <div class="kf-drone-anim">♻️</div>
+            <div class="kf-panel-tag">Neural Sorter · 89 Categories · 95% Purity</div>
+          </div>
+          <div class="kf-panel-body">
+            <h3>Recycling Plants</h3>
+            <p>Our Neural Sorter AI integrates directly into recycling facility conveyor systems — classifying 89 material types at 3 m/s with 98% accuracy, delivering 95%+ product purity.</p>
+            <a href="service-recycling.html" class="btn-primary" style="margin-top:16px">Learn More →</a>
+          </div>
+        </div>
+        <div class="kf-panel" data-idx="4">
+          <div class="kf-panel-visual" style="background:linear-gradient(135deg,#1a1200,#92400e)">
+            <div class="kf-drone-anim">👥</div>
+            <div class="kf-panel-tag">Mobile App · Real-Time · Community</div>
+          </div>
+          <div class="kf-panel-body">
+            <h3>Community Reporting</h3>
+            <p>Empower citizens to report illegal dumpsites, overflowing bins, and waste hotspots via a mobile app. Reports instantly dispatch the nearest drone for assessment and action.</p>
+            <a href="service-community.html" class="btn-primary" style="margin-top:16px">Learn More →</a>
+          </div>
+        </div>
+        <div class="kf-panel" data-idx="5">
+          <div class="kf-panel-visual" style="background:linear-gradient(135deg,#1a0a0a,#991b1b)">
+            <div class="kf-drone-anim">🏭</div>
+            <div class="kf-panel-tag">CH₄ Detection · Infrared · Compliance</div>
+          </div>
+          <div class="kf-panel-body">
+            <h3>Industrial Sites Monitoring</h3>
+            <p>Drones equipped with infrared gas sensors, CH₄ detectors, and thermal cameras continuously monitor industrial waste sites for leaks, emissions, and regulatory compliance.</p>
+            <a href="service-industrial.html" class="btn-primary" style="margin-top:16px">Learn More →</a>
+          </div>
+        </div>
+        <div class="kf-panel" data-idx="6">
+          <div class="kf-panel-visual" style="background:linear-gradient(135deg,#0a0f1e,#312e81)">
+            <div class="kf-drone-anim">📷</div>
+            <div class="kf-panel-tag">LiDAR · Photogrammetry · Point Cloud</div>
+          </div>
+          <div class="kf-panel-body">
+            <h3>Oblique Imagery: 3D Mapping &amp; Analysis</h3>
+            <p>High-resolution drone photogrammetry and LiDAR scanning creates centimeter-accurate 3D models of waste sites, landfills, and urban environments for planning and compliance.</p>
+            <a href="service-3d-mapping.html" class="btn-primary" style="margin-top:16px">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────── -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-green">Process</div>
+      <h2>How WasteParrot Works</h2>
+      <p>A seamless three-step cycle powered by computer vision, machine learning, and autonomous drones.</p>
+    </div>
+    <div class="steps-grid">
+      <a href="service-ai-drones.html" class="step-card">
+        <div class="step-icon">📍</div><div class="step-number">01</div>
+        <h3>Detect &amp; Locate</h3>
+        <p>AI drones scan areas using GPS RTK, LiDAR, and camera arrays. Waste is detected in real time and pinpointed on the live map.</p>
+        <ul class="step-features"><li>GPS RTK + LiDAR mapping</li><li>Computer vision scanning</li><li>Real-time location feed</li></ul>
+      </a>
+      <a href="service-garbage.html" class="step-card">
+        <div class="step-icon">🚁</div><div class="step-number">02</div>
+        <h3>Fly &amp; Collect</h3>
+        <p>Drone swarms navigate autonomously, hover over waste zones, and collect material across 89 categories with 95%+ purity.</p>
+        <ul class="step-features"><li>Autonomous swarm navigation</li><li>89-category classification</li><li>95%+ material purity</li></ul>
+      </a>
+      <a href="service-3d-mapping.html" class="step-card">
+        <div class="step-icon">📊</div><div class="step-number">03</div>
+        <h3>Analyze &amp; Report</h3>
+        <p>Data flows into our cloud AI platform, generating insights on waste composition, hotspots, and recycling rates for city planners.</p>
+        <ul class="step-features"><li>Real-time dashboards</li><li>Waste composition analytics</li><li>City-wide reporting</li></ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AI SYSTEMS ────────────────────────────────────────── -->
+<section class="section section-dark" id="ai-systems">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-blue">Technology</div>
+      <h2>Our AI Systems</h2>
+      <p>Three intelligent layers working in unison to make waste management smarter than ever.</p>
+    </div>
+    <div class="ai-grid">
+      <a href="service-ai-drones.html" class="ai-card">
+        <div class="ai-icon-wrap" style="--color:#22c55e">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>Vision AI</h3>
+        <p>Trained on billions of waste images, detects materials at up to 3 m/s with 98% count accuracy — even in low light.</p>
+        <div class="ai-metrics">
+          <div class="metric"><span>98%</span><small>Accuracy</small></div>
+          <div class="metric"><span>3 m/s</span><small>Speed</small></div>
+        </div>
+        <div class="ai-live-bar"><div class="live-label">Live Detections/sec</div><div class="live-bar-track"><div class="live-bar-fill" id="vision-bar"></div></div></div>
+      </a>
+      <a href="service-recycling.html" class="ai-card ai-card-featured">
+        <div class="featured-label">Core Engine</div>
+        <div class="ai-icon-wrap" style="--color:#6366f1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <h3>Neural Sorter</h3>
+        <p>Deep-learning model classifies 89 waste categories — plastics, organics, metals, e-waste — routing each to the correct stream.</p>
+        <div class="ai-metrics">
+          <div class="metric"><span>89</span><small>Categories</small></div>
+          <div class="metric"><span>95%</span><small>Purity</small></div>
+        </div>
+        <div class="ai-live-bar"><div class="live-label">Sorter Throughput</div><div class="live-bar-track"><div class="live-bar-fill" id="sorter-bar"></div></div></div>
+      </a>
+      <a href="service-garbage.html" class="ai-card">
+        <div class="ai-icon-wrap" style="--color:#f59e0b">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Route Optimizer</h3>
+        <p>Reinforcement-learning agent plans optimal drone routes in real time, cutting energy consumption by 40%.</p>
+        <div class="ai-metrics">
+          <div class="metric"><span>40%</span><small>Energy Saved</small></div>
+          <div class="metric"><span>24/7</span><small>Operation</small></div>
+        </div>
+        <div class="ai-live-bar"><div class="live-label">Route Efficiency</div><div class="live-bar-track"><div class="live-bar-fill" id="route-bar"></div></div></div>
+      </a>
+    </div>
+    <div class="tech-bar">
+      <span class="tech-label">Powered by</span>
+      <div class="tech-tags">
+        <span>Computer Vision</span><span>LiDAR</span><span>GPS RTK</span>
+        <span>Reinforcement Learning</span><span>Edge Computing</span><span>5G Telemetry</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LIVE MAP ───────────────────────────────────────────── -->
+<section class="section" id="live-map">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-green">Live Tracking</div>
+      <h2>Drone Fleet Live Map</h2>
+      <p>Watch our drones move in real time across the city — collecting, scanning, and sorting.</p>
+    </div>
+    <div class="map-layout">
+      <div class="map-wrapper">
+        <div class="map-legend">
+          <div class="legend-item"><span class="dot dot-green"></span>Active Drone</div>
+          <div class="legend-item"><span class="dot dot-yellow"></span>Collecting</div>
+          <div class="legend-item"><span class="dot dot-purple"></span>Scanning</div>
+          <div class="legend-item"><span class="dot dot-red"></span>Waste Hotspot</div>
+          <div class="legend-item"><span class="dot dot-blue"></span>Charge Station</div>
+        </div>
+        <div id="map"></div>
+        <div class="map-overlay">
+          <div class="map-stat"><span id="active-count">5</span> Active Drones</div>
+          <div class="map-stat"><span id="collected-count">1,247</span> kg Today</div>
+        </div>
+      </div>
+      <div class="activity-panel">
+        <div class="activity-header"><span class="live-dot"></span> Live Activity Feed</div>
+        <div class="activity-feed" id="activity-feed"></div>
+        <div class="drone-stats-mini">
+          <div class="dsm-title">Fleet Status</div>
+          <div class="dsm-row"><span>α-1</span><span class="dsm-bar-wrap"><div class="dsm-bar" style="width:87%"></div></span><span class="dsm-num">87%</span></div>
+          <div class="dsm-row"><span>α-2</span><span class="dsm-bar-wrap"><div class="dsm-bar" style="width:72%"></div></span><span class="dsm-num">72%</span></div>
+          <div class="dsm-row"><span>β-1</span><span class="dsm-bar-wrap"><div class="dsm-bar dsm-bar-yellow" style="width:54%"></div></span><span class="dsm-num">54%</span></div>
+          <div class="dsm-row"><span>β-2</span><span class="dsm-bar-wrap"><div class="dsm-bar" style="width:91%"></div></span><span class="dsm-num">91%</span></div>
+          <div class="dsm-row"><span>γ-1</span><span class="dsm-bar-wrap"><div class="dsm-bar dsm-bar-purple" style="width:63%"></div></span><span class="dsm-num">63%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── IMPACT ────────────────────────────────────────────── -->
+<section class="section section-green" id="impact">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-white">Our Impact</div>
+      <h2>Numbers That Matter</h2>
+      <p>Real results from cities powered by WasteParrot.</p>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card"><div class="impact-icon">🌍</div><div class="impact-num" data-target="42">0</div><div class="impact-label">Cities Covered</div></div>
+      <div class="impact-card"><div class="impact-icon">♻️</div><div class="impact-num" data-target="2.4" data-suffix="M kg">0</div><div class="impact-label">Waste Recycled</div></div>
+      <div class="impact-card"><div class="impact-icon">🚁</div><div class="impact-num" data-target="500">0</div><div class="impact-label">Drones Deployed</div></div>
+      <div class="impact-card"><div class="impact-icon">💨</div><div class="impact-num" data-target="30">0</div><div class="impact-label">% CO₂ Reduced</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEAM PREVIEW ──────────────────────────────────────── -->
+<section class="section section-dark" id="team-preview">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-blue">Leadership</div>
+      <h2>Meet the Team</h2>
+      <p>The visionaries driving WasteParrot's mission forward.</p>
+    </div>
+    <div class="team-preview-grid">
+      <a href="team-abdujabbor.html" class="team-prev-card">
+        <div class="tpc-photo" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">
+          <img src="img/abdujabbor.jpg" alt="Abdujabbor Ahmadjonov" onerror="this.style.display='none'"/>
+          <span class="tpc-initials">AA</span>
+        </div>
+        <div class="tpc-info">
+          <div class="tpc-role">CEO &amp; Founder</div>
+          <div class="tpc-name">Abdujabbor Ahmadjonov</div>
+          <div class="tpc-uni">University of Alberta · Computer Science</div>
+          <div class="tpc-arrow">View Profile →</div>
+        </div>
+      </a>
+      <a href="team-junaid.html" class="team-prev-card">
+        <div class="tpc-photo" style="background:linear-gradient(135deg,#312e81,#6366f1)">
+          <img src="img/dr-junaid.jpg" alt="Dr. Junaid OOsman" onerror="this.style.display='none'"/>
+          <span class="tpc-initials">JO</span>
+        </div>
+        <div class="tpc-info">
+          <div class="tpc-role">Chief AI Officer</div>
+          <div class="tpc-name">Dr. Junaid OOsman</div>
+          <div class="tpc-uni">University of Alberta · PhD AI &amp; Computer Vision</div>
+          <div class="tpc-arrow">View Profile →</div>
+        </div>
+      </a>
+      <a href="team-rafiq.html" class="team-prev-card">
+        <div class="tpc-photo" style="background:linear-gradient(135deg,#064e3b,#22c55e)">
+          <img src="img/dr-rafiq.jpg" alt="Dr. Rafiq Ahmad" onerror="this.style.display='none'"/>
+          <span class="tpc-initials">RA</span>
+        </div>
+        <div class="tpc-info">
+          <div class="tpc-role">Chief Technology Officer</div>
+          <div class="tpc-name">Dr. Rafiq Ahmad</div>
+          <div class="tpc-uni">Smart Systems &amp; Digital Innovation</div>
+          <div class="tpc-arrow">View Profile →</div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="team.html" class="btn-secondary">View Full Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────── -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-text">
+        <div class="badge badge-green">Get In Touch</div>
+        <h2>Ready to Deploy in Your City?</h2>
+        <p>Partner with WasteParrot to bring autonomous drone waste collection to your municipality.</p>
+        <div class="contact-info">
+          <div class="contact-item"><span>📧</span><span>Info@wasteparrot.com</span></div>
+          <div class="contact-item"><span>📞</span><span>+1 (800) PARROT-1</span></div>
+          <div class="contact-item"><span>📍</span><span>Edmonton, AB · London · Singapore</span></div>
+        </div>
+        <a href="team.html" class="team-cta-link">Meet our team →</a>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" required/>
+          <input type="email" placeholder="Email Address" required/>
+        </div>
+        <input type="text" placeholder="City / Municipality"/>
+        <select><option value="" disabled selected>Deployment Scale</option>
+          <option>Pilot (1–10 drones)</option><option>Small City (10–50 drones)</option>
+          <option>Large City (50–200 drones)</option><option>Metro (200+ drones)</option>
+        </select>
+        <textarea placeholder="Tell us about your waste management challenges..." rows="4"></textarea>
+        <button type="submit" class="btn-primary btn-full">Send Message 🦜</button>
+        <p class="form-note" id="form-msg"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="logo"><span class="logo-icon">🦜</span> WasteParrot</div>
+      <p>AI-powered drone waste collection for a cleaner planet.</p>
+    </div>
+    <div class="footer-links">
+      <div><h5>Services</h5>
+        <a href="service-ai-drones.html">AI Drone Services</a>
+        <a href="service-garbage.html">Garbage Management</a>
+        <a href="service-beach.html">Beach Cleanup</a>
+        <a href="service-recycling.html">Recycling Plants</a>
+        <a href="service-community.html">Community Reporting</a>
+        <a href="service-industrial.html">Industrial Monitoring</a>
+        <a href="service-3d-mapping.html">3D Mapping</a>
+      </div>
+      <div><h5>Company</h5>
+        <a href="about.html">About</a><a href="team.html">Team</a>
+        <a href="#">Careers</a><a href="#">Press</a>
+      </div>
+      <div><h5>Contact</h5>
+        <a href="mailto:Info@wasteparrot.com">Info@wasteparrot.com</a>
+        <a href="#contact">Get Started</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 WasteParrot Inc. — Built for a greener future 🌍</p></div>
+</footer>
+
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+<script>
+/* Key Features accordion */
+document.querySelectorAll('.kf-item').forEach(item => {
+  item.addEventListener('mouseenter', function(e) {
+    e.preventDefault();
+    const idx = this.dataset.idx;
+    document.querySelectorAll('.kf-item').forEach(i => i.classList.remove('active'));
+    document.querySelectorAll('.kf-panel').forEach(p => p.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelector(`.kf-panel[data-idx="${idx}"]`).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
