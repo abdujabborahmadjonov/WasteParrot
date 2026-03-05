@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Articles & Insights — WasteParrot</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="page-styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🦜</span><span>WasteParrot</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="index.html#live-map">Live Map</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="articles.html" class="active">Articles</a></li>
+      <li><a href="index.html#contact" class="btn-nav">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="articles-hero">
+  <div class="hero-bg">
+    <div class="orb orb1"></div><div class="orb orb2"></div><div class="grid-overlay"></div>
+  </div>
+  <div class="container" style="position:relative;z-index:1;padding-top:140px;padding-bottom:80px">
+    <div class="badge badge-green">Knowledge Hub</div>
+    <h1 style="font-size:clamp(2.4rem,5vw,4rem);font-weight:900;margin:16px 0 20px;letter-spacing:-.5px">
+      Articles &amp; <span class="gradient-text">Insights</span>
+    </h1>
+    <p style="font-size:1.15rem;color:rgba(255,255,255,.65);max-width:580px;line-height:1.7">
+      Exploration, research, and stories from the intersection of AI, drone technology, and environmental sustainability.
+    </p>
+
+    <!-- Filter Bar -->
+    <div class="articles-filter" id="filter-bar">
+      <button class="filter-btn active" data-cat="all">All</button>
+      <button class="filter-btn" data-cat="Technology">Technology</button>
+      <button class="filter-btn" data-cat="Research">Research</button>
+      <button class="filter-btn" data-cat="Environment">Environment</button>
+      <button class="filter-btn" data-cat="Industry">Industry</button>
+      <button class="filter-btn" data-cat="Smart Cities">Smart Cities</button>
+      <button class="filter-btn" data-cat="Company">Company</button>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED ARTICLE -->
+<section class="section" id="featured-article" style="padding-bottom:0">
+  <div class="container">
+    <div class="articles-featured" id="featured-card"></div>
+  </div>
+</section>
+
+<!-- ARTICLES GRID -->
+<section class="section" id="articles-grid-section">
+  <div class="container">
+    <div class="articles-count" id="articles-count"></div>
+    <div class="articles-grid" id="articles-grid"></div>
+    <div class="no-results" id="no-results" style="display:none">
+      <div style="font-size:3rem;margin-bottom:16px">🔍</div>
+      <h3>No articles in this category yet</h3>
+      <p style="color:rgba(255,255,255,.5)">Check back soon — we publish new articles every week.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER CTA -->
+<section class="cta-section">
+  <div class="container cta-inner">
+    <div class="badge badge-white">Stay Informed</div>
+    <h2>Get Articles in Your Inbox</h2>
+    <p>New research, case studies, and technology updates from WasteParrot — no spam, unsubscribe anytime.</p>
+    <form class="newsletter-form" id="newsletter-form" style="display:flex;gap:12px;max-width:420px;margin:0 auto">
+      <input type="email" placeholder="Your email address" required style="flex:1;padding:14px 18px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:.95rem;outline:none"/>
+      <button type="submit" class="btn-primary" style="white-space:nowrap">Subscribe</button>
+    </form>
+    <p id="nl-msg" style="margin-top:12px;font-size:.85rem;color:rgba(255,255,255,.6)"></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="logo"><span class="logo-icon">🦜</span> WasteParrot</div>
+      <p>AI-powered drone waste collection for a cleaner planet.</p>
+    </div>
+    <div class="footer-links">
+      <div><h5>Services</h5>
+        <a href="service-ai-drones.html">AI Drone Services</a>
+        <a href="service-garbage.html">Garbage Management</a>
+        <a href="service-beach.html">Beach Cleanup</a>
+        <a href="service-recycling.html">Recycling Plants</a>
+        <a href="service-community.html">Community Reporting</a>
+        <a href="service-industrial.html">Industrial Monitoring</a>
+        <a href="service-3d-mapping.html">3D Mapping</a>
+      </div>
+      <div><h5>Company</h5>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="articles.html">Articles</a>
+      </div>
+      <div><h5>Contact</h5>
+        <a href="mailto:Info@wasteparrot.com">Info@wasteparrot.com</a>
+        <a href="index.html#contact">Get Started</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 WasteParrot Inc. — Built for a greener future 🌍</p></div>
+</footer>
+
+<script src="articles-data.js"></script>
+<script src="shared.js"></script>
+<script>
+(function () {
+  const grid       = document.getElementById('articles-grid');
+  const featured   = document.getElementById('featured-card');
+  const countEl    = document.getElementById('articles-count');
+  const noResults  = document.getElementById('no-results');
+  let   activeFilter = 'all';
+
+  function categoryStyle(cat, color) {
+    return `style="background:${color}22;color:${color};border:1px solid ${color}44"`;
+  }
+
+  function renderFeatured(article) {
+    featured.innerHTML = `
+      <a href="article.html?slug=${article.slug}" class="article-featured-card">
+        <div class="afc-visual">
+          <div class="afc-emoji">${article.emoji}</div>
+          <div class="afc-tag">Featured Article</div>
+        </div>
+        <div class="afc-body">
+          <div class="afc-meta">
+            <span class="article-cat" ${categoryStyle(article.category, article.categoryColor)}>${article.category}</span>
+            <span class="article-date">${article.date}</span>
+            <span class="article-read">${article.readTime}</span>
+          </div>
+          <h2 class="afc-title">${article.title}</h2>
+          <p class="afc-excerpt">${article.excerpt}</p>
+          <span class="afc-cta">Read Article <span style="color:var(--green)">→</span></span>
+        </div>
+      </a>`;
+  }
+
+  function renderGrid(list) {
+    if (!list.length) {
+      grid.innerHTML = '';
+      noResults.style.display = 'block';
+      countEl.textContent = '';
+      return;
+    }
+    noResults.style.display = 'none';
+    countEl.textContent = `${list.length} article${list.length !== 1 ? 's' : ''}`;
+    grid.innerHTML = list.map(a => `
+      <a href="article.html?slug=${a.slug}" class="article-card reveal">
+        <div class="ac-visual">
+          <div class="ac-emoji">${a.emoji}</div>
+        </div>
+        <div class="ac-body">
+          <div class="ac-meta">
+            <span class="article-cat" ${categoryStyle(a.category, a.categoryColor)}>${a.category}</span>
+            <span class="article-read">${a.readTime}</span>
+          </div>
+          <h3 class="ac-title">${a.title}</h3>
+          <p class="ac-excerpt">${a.excerpt}</p>
+          <div class="ac-footer">
+            <span class="ac-date">${a.date}</span>
+            <span class="ac-link">Read more →</span>
+          </div>
+        </div>
+      </a>
+    `).join('');
+
+    // re-trigger scroll reveal on new cards
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translateY(0)';
+          }, (i % 6) * 80);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    grid.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      obs.observe(el);
+    });
+  }
+
+  function applyFilter(cat) {
+    activeFilter = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+    const list = cat === 'all' ? ARTICLES.slice(1) : ARTICLES.slice(1).filter(a => a.category === cat);
+    renderGrid(list);
+  }
+
+  // Init
+  renderFeatured(ARTICLES[0]);
+  renderGrid(ARTICLES.slice(1));
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.cat));
+  });
+
+  // Newsletter
+  document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('nl-msg').textContent = 'Thanks! You\'re subscribed.';
+    this.reset();
+  });
+})();
+</script>
+</body>
+</html>
